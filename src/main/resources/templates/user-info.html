@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<style>
+    .title-style {
+        border-collapse: collapse;
+        margin: 25px 0;
+        width: 490px;
+        border-bottom: 2px solid #009879;
+        font-family: "Comic Sans MS";
+    }
+    .form-style {
+        font-family: "Comic Sans MS";
+    }
+</style>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h2 class="title-style">Employee info</h2>
+<br>
+
+<form class="form-style" action="/save-or-update-user" th:object="${user}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <p class=".label-style">First name: <input type="text" th:field="*{firstName}"/></p>
+    <p class=".label-style">Last name: <input type="text" th:field="*{lastName}"/></p>
+    <p class=".label-style">Age: <input type="text" th:field="*{age}"/></p>
+    <p class=".label-style">Country: <input type="text" th:field="*{country}"/></p>
+    <p class=".label-style"><input type="submit" value="Submit"/>
+</form>
+
+
+</body>
+</html>

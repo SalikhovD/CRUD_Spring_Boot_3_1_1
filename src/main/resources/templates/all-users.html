@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<style>
+    .content-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        min-width: 400px;
+        border-radius: 5px 5px 0 0;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+        font-family: "Comic Sans MS";
+    }
+
+    .content-table thead tr {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    .content-table th,
+    .content-table td {
+        padding: 3px 12px;
+    }
+
+    .content-table tr {
+        border-bottom: 1px solid #dddddd;
+    }
+
+    .content-table tbody tr:last-of-type {
+        border-bottom: 2px solid #009879;
+    }
+
+    .title-style {
+        border-collapse: collapse;
+        margin: 25px 0;
+        width: 490px;
+        border-bottom: 2px solid #009879;
+        font-family: "Comic Sans MS";
+    }
+</style>
+<body xmlns:th="http://www.w3.org/1999/xhtml">
+<h2 class="title-style">All users: </h2>
+<table class="content-table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Age</th>
+        <th>Country</th>
+        <th colspan="2" style="text-align: center;">Options</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${userList}">
+
+        <td th:text="${user.firstName}"/>
+        <td th:text="${user.lastName}"/>
+        <td th:text="${user.age}"/>
+        <td th:text="${user.country}"/>
+        <td>
+            <form action="/delete-user">
+                <input type="hidden" name="id" th:value=${user.id}>
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+        <td>
+            <form action="/updateInfo">
+                <input type="hidden" name="id" th:value=${user.id}>
+                <button type="submit">Update</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<form action="/new-user">
+    <button type="submit">Add new user</button>
+</form>
+</body>
+</html>

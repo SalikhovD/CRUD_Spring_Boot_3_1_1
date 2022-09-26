@@ -58,13 +58,13 @@
         <td th:text="${user.age}"/>
         <td th:text="${user.country}"/>
         <td>
-            <form action="/delete-user">
+            <form action="/delete-user" method="post">
                 <input type="hidden" name="id" th:value=${user.id}>
                 <button type="submit">Delete</button>
             </form>
         </td>
         <td>
-            <form action="/updateInfo">
+            <form action="/updateInfo" method="post">
                 <input type="hidden" name="id" th:value=${user.id}>
                 <button type="submit">Update</button>
             </form>
@@ -73,7 +73,7 @@
     </tbody>
 </table>
 
-<form action="/new-user">
+<form action="/new-user" method="get">
     <button type="submit">Add new user</button>
 </form>
 </body>
